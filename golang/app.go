@@ -9,15 +9,18 @@ import (
 	"html/template"
 	"log"
 	"math/rand"
+	"net"
 	"net/http"
 	"net/url"
 	"os"
 	"os/exec"
+	"os/signal"
 	"path"
 	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
+	"syscall"
 
 	"github.com/gorilla/context"
 	"github.com/gorilla/mux"
@@ -445,7 +448,37 @@ func main() {
 
 	r.HandleFunc("/", GetIndex)
 	r.PathPrefix("/").Handler(http.FileServer(http.Dir("../static")))
-	log.Fatal(http.ListenAndServe(":"+strconv.Itoa(*httpport), r))
+
+	sigchan := make(chan os.Signal)
+	signal.Notify(sigchan, syscall.SIGTERM)
+	signal.Notify(sigchan, syscall.SIGINT)
+
+	var li net.Listener
+	sock := "/dev/shm/server.sock"
+	if *httpport == 0 {
+		ferr := os.Remove(sock)
+		if ferr != nil {
+			if !os.IsNotExist(ferr) {
+				panic(ferr.Error())
+			}
+		}
+		li, err = net.Listen("unix", sock)
+		cerr := os.Chmod(sock, 0666)
+		if cerr != nil {
+			panic(cerr.Error())
+		}
+	} else {
+		li, err = net.ListenTCP("tcp", &net.TCPAddr{Port: int(*httpport)})
+	}
+	if err != nil {
+		panic(err.Error())
+	}
+	go func() {
+		// func Serve(l net.Listener, handler Handler) error
+		log.Fatal(http.Serve(li, r))
+	}()
+
+	<-sigchan
 }
 
 func checkErr(err error) {
