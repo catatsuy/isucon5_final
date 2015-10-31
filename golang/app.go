@@ -378,59 +378,59 @@ func GetData(w http.ResponseWriter, r *http.Request) {
 		uri := fmt.Sprintf(*uriTemplate, ks...)
 
 		stopwatch.Watch(service + " start")
-		t0 := time.Now()
+		//t0 := time.Now()
 
 		if service == "ken" {
 			key := ks2[0]
 			cache, ok := kenCache[key]
 			if ok {
 				data = append(data, cache)
-				log.Printf("cache:hit\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, key, time.Now().Sub(t0).Nanoseconds())
+				//log.Printf("cache:hit\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, key, time.Now().Sub(t0).Nanoseconds())
 			} else {
 				d := Data{service, fetchApi(method, uri, headers, params)}
 				kenCache[key] = d
 				data = append(data, d)
-				log.Printf("cache:miss\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, key, time.Now().Sub(t0).Nanoseconds())
+				//log.Printf("cache:miss\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, key, time.Now().Sub(t0).Nanoseconds())
 			}
 		} else if service == "ken2" {
 			q, _ := params["zipcode"]
 			cache, ok := ken2Cache[q]
 			if ok {
 				data = append(data, cache)
-				log.Printf("cache:hit\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
+				//log.Printf("cache:hit\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
 			} else {
 				d := Data{service, fetchApi(method, uri, headers, params)}
 				ken2Cache[q] = d
 				data = append(data, d)
-				log.Printf("cache:miss\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
+				//log.Printf("cache:miss\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
 			}
 		} else if service == "surname" {
 			q, _ := params["q"]
 			cache, ok := surnameCache[q]
 			if ok {
 				data = append(data, cache)
-				log.Printf("cache:hit\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
+				//log.Printf("cache:hit\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
 			} else {
 				d := Data{service, fetchApi(method, uri, headers, params)}
 				surnameCache[q] = d
 				data = append(data, d)
-				log.Printf("cache:miss\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
+				//log.Printf("cache:miss\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
 			}
 		} else if service == "givenname" {
 			q, _ := params["q"]
 			cache, ok := givennameCache[q]
 			if ok {
 				data = append(data, cache)
-				log.Printf("cache:hit\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
+				//log.Printf("cache:hit\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
 			} else {
 				d := Data{service, fetchApi(method, uri, headers, params)}
 				givennameCache[q] = d
 				data = append(data, d)
-				log.Printf("cache:miss\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
+				//log.Printf("cache:miss\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
 			}
 		} else {
 			data = append(data, Data{service, fetchApi(method, uri, headers, params)})
-			log.Printf("cache:uncached\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, "-", time.Now().Sub(t0).Nanoseconds())
+			//log.Printf("cache:uncached\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, "-", time.Now().Sub(t0).Nanoseconds())
 		}
 		stopwatch.Watch(service + " finish")
 	}
@@ -457,12 +457,12 @@ func main() {
 	surnameCache = map[string]Data{}
 	givennameCache = map[string]Data{}
 
-	f, err := os.OpenFile("/tmp/req.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
-	if err != nil {
-		log.Fatalf("error opening file: %v", err)
-	}
-	defer f.Close()
-	log.SetOutput(f)
+	//f, err := os.OpenFile("/tmp/req.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	//if err != nil {
+	//log.Fatalf("error opening file: %v", err)
+	//}
+	//defer f.Close()
+	//log.SetOutput(f)
 
 	flag.Parse()
 	host := os.Getenv("ISUCON5_DB_HOST")
