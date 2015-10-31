@@ -9,26 +9,35 @@ import (
 	"html/template"
 	"log"
 	"math/rand"
+	"net"
 	"net/http"
 	"net/url"
 	"os"
 	"os/exec"
+	"os/signal"
 	"path"
 	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
+	"syscall"
 
 	"github.com/gorilla/context"
 	"github.com/gorilla/mux"
 	"github.com/gorilla/sessions"
 	_ "github.com/lib/pq"
+	"github.com/walf443/stopwatch"
 )
 
 var (
 	db    *sql.DB
 	store *sessions.CookieStore
 )
+
+var kenCache map[string]Data
+var ken2Cache map[string]Data
+var surnameCache map[string]Data
+var givennameCache map[string]Data
 
 type User struct {
 	ID    int
@@ -320,6 +329,7 @@ func fetchApi(method, uri string, headers, params map[string]string) map[string]
 }
 
 func GetData(w http.ResponseWriter, r *http.Request) {
+	stopwatch.Watch("GetData")
 	user := getCurrentUser(w, r)
 	if user == nil {
 		w.WriteHeader(http.StatusForbidden)
@@ -347,10 +357,11 @@ func GetData(w http.ResponseWriter, r *http.Request) {
 		var tokenType *string
 		var tokenKey *string
 		var uriTemplate *string
-		var service *string
-		checkErr(rows.Scan(&method, &tokenType, &tokenKey, &uriTemplate, &service))
+		var serv *string
+		checkErr(rows.Scan(&method, &tokenType, &tokenKey, &uriTemplate, &serv))
+		service := *serv
 
-		conf, _ := arg[*service]
+		conf, _ := arg[service]
 
 		headers := make(map[string]string)
 		params := conf.Params
@@ -370,12 +381,69 @@ func GetData(w http.ResponseWriter, r *http.Request) {
 		}
 
 		ks := make([]interface{}, len(conf.Keys))
+		ks2 := make([]string, len(conf.Keys))
 		for i, s := range conf.Keys {
 			ks[i] = s
+			ks2[i] = s
 		}
 		uri := fmt.Sprintf(*uriTemplate, ks...)
 
-		data = append(data, Data{*service, fetchApi(method, uri, headers, params)})
+		stopwatch.Watch(service + " start")
+		//t0 := time.Now()
+
+		if service == "ken" {
+			key := ks2[0]
+			cache, ok := kenCache[key]
+			if ok {
+				data = append(data, cache)
+				//log.Printf("cache:hit\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, key, time.Now().Sub(t0).Nanoseconds())
+			} else {
+				d := Data{service, fetchApi(method, uri, headers, params)}
+				kenCache[key] = d
+				data = append(data, d)
+				//log.Printf("cache:miss\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, key, time.Now().Sub(t0).Nanoseconds())
+			}
+		} else if service == "ken2" {
+			q, _ := params["zipcode"]
+			cache, ok := ken2Cache[q]
+			if ok {
+				data = append(data, cache)
+				//log.Printf("cache:hit\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
+			} else {
+				d := Data{service, fetchApi(method, uri, headers, params)}
+				ken2Cache[q] = d
+				data = append(data, d)
+				//log.Printf("cache:miss\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
+			}
+		} else if service == "surname" {
+			q, _ := params["q"]
+			cache, ok := surnameCache[q]
+			if ok {
+				data = append(data, cache)
+				//log.Printf("cache:hit\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
+			} else {
+				d := Data{service, fetchApi(method, uri, headers, params)}
+				surnameCache[q] = d
+				data = append(data, d)
+				//log.Printf("cache:miss\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
+			}
+		} else if service == "givenname" {
+			q, _ := params["q"]
+			cache, ok := givennameCache[q]
+			if ok {
+				data = append(data, cache)
+				//log.Printf("cache:hit\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
+			} else {
+				d := Data{service, fetchApi(method, uri, headers, params)}
+				givennameCache[q] = d
+				data = append(data, d)
+				//log.Printf("cache:miss\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
+			}
+		} else {
+			data = append(data, Data{service, fetchApi(method, uri, headers, params)})
+			//log.Printf("cache:uncached\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, "-", time.Now().Sub(t0).Nanoseconds())
+		}
+		stopwatch.Watch(service + " finish")
 	}
 
 	w.Header().Set("Content-Type", "application/json")
@@ -395,6 +463,18 @@ func GetInitialize(w http.ResponseWriter, r *http.Request) {
 var httpport = flag.Int("port", 0, "port to listen")
 
 func main() {
+	kenCache = map[string]Data{}
+	ken2Cache = map[string]Data{}
+	surnameCache = map[string]Data{}
+	givennameCache = map[string]Data{}
+
+	//f, err := os.OpenFile("/tmp/req.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	//if err != nil {
+	//log.Fatalf("error opening file: %v", err)
+	//}
+	//defer f.Close()
+	//log.SetOutput(f)
+
 	flag.Parse()
 	host := os.Getenv("ISUCON5_DB_HOST")
 	if host == "" {
@@ -456,7 +536,37 @@ func main() {
 
 	r.HandleFunc("/", GetIndex)
 	r.PathPrefix("/").Handler(http.FileServer(http.Dir("../static")))
-	log.Fatal(http.ListenAndServe(":"+strconv.Itoa(*httpport), r))
+
+	sigchan := make(chan os.Signal)
+	signal.Notify(sigchan, syscall.SIGTERM)
+	signal.Notify(sigchan, syscall.SIGINT)
+
+	var li net.Listener
+	sock := "/dev/shm/server.sock"
+	if *httpport == 0 {
+		ferr := os.Remove(sock)
+		if ferr != nil {
+			if !os.IsNotExist(ferr) {
+				panic(ferr.Error())
+			}
+		}
+		li, err = net.Listen("unix", sock)
+		cerr := os.Chmod(sock, 0666)
+		if cerr != nil {
+			panic(cerr.Error())
+		}
+	} else {
+		li, err = net.ListenTCP("tcp", &net.TCPAddr{Port: int(*httpport)})
+	}
+	if err != nil {
+		panic(err.Error())
+	}
+	go func() {
+		// func Serve(l net.Listener, handler Handler) error
+		log.Fatal(http.Serve(li, r))
+	}()
+
+	<-sigchan
 }
 
 func checkErr(err error) {
