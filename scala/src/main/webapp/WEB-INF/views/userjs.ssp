@@ -1,0 +1,3 @@
+<% attributes("layout") = "" %>
+<%@ val grade:isucon5.Grade %>
+var AIR_ISU_REFRESH_INTERVAL = <%= grade.toString match { case "micro" => "30000"; case "small" => "30000"; case "standard" => "20000"; case "premium" => "10000"}%>;

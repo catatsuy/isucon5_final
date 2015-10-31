@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="isucon5-final-scala"
+		module="isucon5-final-scala"
+		revision="1.0"
+		conf="runtime-internal"
+		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool, container"
+		date="20151031073256"/>
+	<dependencies>
+		<module organisation="com.github.nscala-time" name="nscala-time_2.11">
+			<revision name="2.2.0" status="release" pubdate="20150827171419" resolver="jcenter" artresolver="jcenter" homepage="https://github.com/nscala-time/nscala-time" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="36">
+				<license name="Apache" url="http://www.opensource.org/licenses/Apache-2.0"/>
+				<metadata-artifact status="successful" details="" size="1784" time="646" location="/home/isucon/.ivy2/cache/com.github.nscala-time/nscala-time_2.11/ivy-2.2.0.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/com.github.nscala-time/nscala-time_2.11/ivy-2.2.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/com/github/nscala-time/nscala-time_2.11/2.2.0/nscala-time_2.11-2.2.0.pom"/>
+				<caller organisation="isucon5-final-scala" name="isucon5-final-scala" conf="compile, runtime-internal, runtime, optional" rev="2.2.0" rev-constraint-default="2.2.0" rev-constraint-dynamic="2.2.0" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="nscala-time_2.11" type="jar" ext="jar" status="successful" details="" size="200904" time="1397" location="/home/isucon/.ivy2/cache/com.github.nscala-time/nscala-time_2.11/jars/nscala-time_2.11-2.2.0.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/com/github/nscala-time/nscala-time_2.11/2.2.0/nscala-time_2.11-2.2.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="joda-time" name="joda-time">
+			<revision name="2.8.2" status="release" pubdate="20151031073347" resolver="jcenter" artresolver="jcenter" homepage="http://www.joda.org/joda-time/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="37">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="28722" time="803" location="/home/isucon/.ivy2/cache/joda-time/joda-time/ivy-2.8.2.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/joda-time/joda-time/ivy-2.8.2.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/joda-time/joda-time/2.8.2/joda-time-2.8.2.pom"/>
+				<caller organisation="com.github.nscala-time" name="nscala-time_2.11" conf="default, compile, runtime, master" rev="2.8.2" rev-constraint-default="2.8.2" rev-constraint-dynamic="2.8.2" callerrev="2.2.0"/>
+				<artifacts>
+					<artifact name="joda-time" type="jar" ext="jar" status="successful" details="" size="621992" time="3594" location="/home/isucon/.ivy2/cache/joda-time/joda-time/jars/joda-time-2.8.2.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/joda-time/joda-time/2.8.2/joda-time-2.8.2.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.joda" name="joda-convert">
+			<revision name="1.2" status="release" pubdate="20151031073348" resolver="jcenter" artresolver="jcenter" homepage="http://joda-convert.sourceforge.net" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="38">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="10629" time="672" location="/home/isucon/.ivy2/cache/org.joda/joda-convert/ivy-1.2.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/org.joda/joda-convert/ivy-1.2.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/joda/joda-convert/1.2/joda-convert-1.2.pom"/>
+				<caller organisation="com.github.nscala-time" name="nscala-time_2.11" conf="default, compile, runtime, master" rev="1.2" rev-constraint-default="1.2" rev-constraint-dynamic="1.2" callerrev="2.2.0"/>
+				<artifacts>
+					<artifact name="joda-convert" type="jar" ext="jar" status="successful" details="" size="38460" time="1002" location="/home/isucon/.ivy2/cache/org.joda/joda-convert/jars/joda-convert-1.2.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/joda/joda-convert/1.2/joda-convert-1.2.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.module" name="jackson-module-scala_2.11">
+			<revision name="2.6.1" status="release" pubdate="20151031073336" resolver="jcenter" artresolver="jcenter" homepage="http://wiki.fasterxml.com/JacksonModuleScala" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="31">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="4088" time="672" location="/home/isucon/.ivy2/cache/com.fasterxml.jackson.module/jackson-module-scala_2.11/ivy-2.6.1.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/com.fasterxml.jackson.module/jackson-module-scala_2.11/ivy-2.6.1.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/com/fasterxml/jackson/module/jackson-module-scala_2.11/2.6.1/jackson-module-scala_2.11-2.6.1.pom"/>
+				<caller organisation="isucon5-final-scala" name="isucon5-final-scala" conf="compile, runtime-internal, runtime, optional" rev="2.6.1" rev-constraint-default="2.6.1" rev-constraint-dynamic="2.6.1" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="jackson-module-scala_2.11" type="bundle" ext="jar" status="successful" details="" size="515496" time="3291" location="/home/isucon/.ivy2/cache/com.fasterxml.jackson.module/jackson-module-scala_2.11/bundles/jackson-module-scala_2.11-2.6.1.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/com/fasterxml/jackson/module/jackson-module-scala_2.11/2.6.1/jackson-module-scala_2.11-2.6.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.module" name="jackson-module-paranamer">
+			<revision name="2.6.1" status="release" pubdate="20150813031600" resolver="jcenter" artresolver="jcenter" homepage="http://wiki.fasterxml.com/JacksonHome" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="35">
+				<metadata-artifact status="successful" details="" size="4501" time="663" location="/home/isucon/.ivy2/cache/com.fasterxml.jackson.module/jackson-module-paranamer/ivy-2.6.1.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/com.fasterxml.jackson.module/jackson-module-paranamer/ivy-2.6.1.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/com/fasterxml/jackson/module/jackson-module-paranamer/2.6.1/jackson-module-paranamer-2.6.1.pom"/>
+				<caller organisation="com.fasterxml.jackson.module" name="jackson-module-scala_2.11" conf="default, compile, runtime, master" rev="2.6.1" rev-constraint-default="2.6.1" rev-constraint-dynamic="2.6.1" callerrev="2.6.1"/>
+				<artifacts>
+					<artifact name="jackson-module-paranamer" type="bundle" ext="jar" status="successful" details="" size="41260" time="935" location="/home/isucon/.ivy2/cache/com.fasterxml.jackson.module/jackson-module-paranamer/bundles/jackson-module-paranamer-2.6.1.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/com/fasterxml/jackson/module/jackson-module-paranamer/2.6.1/jackson-module-paranamer-2.6.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.core" name="jackson-databind">
+			<revision name="2.6.1" status="release" pubdate="20151031073344" resolver="jcenter" artresolver="jcenter" homepage="http://github.com/FasterXML/jackson" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="34">
+				<metadata-artifact status="successful" details="" size="5848" time="668" location="/home/isucon/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/ivy-2.6.1.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/ivy-2.6.1.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/com/fasterxml/jackson/core/jackson-databind/2.6.1/jackson-databind-2.6.1.pom"/>
+				<caller organisation="com.fasterxml.jackson.module" name="jackson-module-scala_2.11" conf="default, compile, runtime, master" rev="2.6.1" rev-constraint-default="2.6.1" rev-constraint-dynamic="2.6.1" callerrev="2.6.1"/>
+				<caller organisation="com.fasterxml.jackson.module" name="jackson-module-paranamer" conf="compile, runtime" rev="2.6.1" rev-constraint-default="2.6.1" rev-constraint-dynamic="2.6.1" callerrev="2.6.1"/>
+				<artifacts>
+					<artifact name="jackson-databind" type="bundle" ext="jar" status="successful" details="" size="1166488" time="4725" location="/home/isucon/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/bundles/jackson-databind-2.6.1.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/com/fasterxml/jackson/core/jackson-databind/2.6.1/jackson-databind-2.6.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.core" name="jackson-annotations">
+			<revision name="2.6.1" status="release" pubdate="20151031073343" resolver="jcenter" artresolver="jcenter" homepage="http://github.com/FasterXML/jackson" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="33">
+				<metadata-artifact status="successful" details="" size="1219" time="669" location="/home/isucon/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/ivy-2.6.1.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/ivy-2.6.1.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/com/fasterxml/jackson/core/jackson-annotations/2.6.1/jackson-annotations-2.6.1.pom"/>
+				<caller organisation="com.fasterxml.jackson.module" name="jackson-module-scala_2.11" conf="default, compile, runtime, master" rev="2.6.1" rev-constraint-default="2.6.1" rev-constraint-dynamic="2.6.1" callerrev="2.6.1"/>
+				<caller organisation="com.fasterxml.jackson.core" name="jackson-databind" conf="compile, runtime" rev="2.6.0" rev-constraint-default="2.6.0" rev-constraint-dynamic="2.6.0" callerrev="2.6.1"/>
+				<artifacts>
+					<artifact name="jackson-annotations" type="bundle" ext="jar" status="successful" details="" size="46967" time="1728" location="/home/isucon/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/bundles/jackson-annotations-2.6.1.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/com/fasterxml/jackson/core/jackson-annotations/2.6.1/jackson-annotations-2.6.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="2.6.0" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="2.6.1"/>
+				<caller organisation="com.fasterxml.jackson.core" name="jackson-databind" conf="compile, runtime" rev="2.6.0" rev-constraint-default="2.6.0" rev-constraint-dynamic="2.6.0" callerrev="2.6.1"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.core" name="jackson-core">
+			<revision name="2.6.1" status="release" pubdate="20151031073337" resolver="jcenter" artresolver="jcenter" homepage="https://github.com/FasterXML/jackson-core" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="32">
+				<metadata-artifact status="successful" details="" size="4832" time="684" location="/home/isucon/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/ivy-2.6.1.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/ivy-2.6.1.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/com/fasterxml/jackson/core/jackson-core/2.6.1/jackson-core-2.6.1.pom"/>
+				<caller organisation="com.fasterxml.jackson.module" name="jackson-module-scala_2.11" conf="default, compile, runtime, master" rev="2.6.1" rev-constraint-default="2.6.1" rev-constraint-dynamic="2.6.1" callerrev="2.6.1"/>
+				<caller organisation="com.fasterxml.jackson.core" name="jackson-databind" conf="compile, runtime" rev="2.6.1" rev-constraint-default="2.6.1" rev-constraint-dynamic="2.6.1" callerrev="2.6.1"/>
+				<artifacts>
+					<artifact name="jackson-core" type="bundle" ext="jar" status="successful" details="" size="258833" time="2450" location="/home/isucon/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/bundles/jackson-core-2.6.1.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/com/fasterxml/jackson/core/jackson-core/2.6.1/jackson-core-2.6.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.xerial" name="xerial-core">
+			<revision name="3.3.8" status="release" pubdate="20150912135040" resolver="jcenter" artresolver="jcenter" homepage="http://xerial.org/" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="30">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="2030" time="650" location="/home/isucon/.ivy2/cache/org.xerial/xerial-core/ivy-3.3.8.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/org.xerial/xerial-core/ivy-3.3.8.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/xerial/xerial-core/3.3.8/xerial-core-3.3.8.pom"/>
+				<caller organisation="isucon5-final-scala" name="isucon5-final-scala" conf="compile, runtime-internal, runtime, optional" rev="3.3.8" rev-constraint-default="3.3.8" rev-constraint-dynamic="3.3.8" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="xerial-core" type="jar" ext="jar" status="successful" details="" size="583664" time="3492" location="/home/isucon/.ivy2/cache/org.xerial/xerial-core/jars/xerial-core-3.3.8.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/xerial/xerial-core/3.3.8/xerial-core-3.3.8.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.json4s" name="json4s-native_2.11">
+			<revision name="3.3.0" status="release" pubdate="20151031073324" resolver="jcenter" artresolver="jcenter" homepage="https://github.com/json4s/json4s" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="24">
+				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="1827" time="688" location="/home/isucon/.ivy2/cache/org.json4s/json4s-native_2.11/ivy-3.3.0.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/org.json4s/json4s-native_2.11/ivy-3.3.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/json4s/json4s-native_2.11/3.3.0/json4s-native_2.11-3.3.0.pom"/>
+				<caller organisation="isucon5-final-scala" name="isucon5-final-scala" conf="compile, runtime-internal, runtime, optional" rev="3.3.0" rev-constraint-default="3.3.0" rev-constraint-dynamic="3.3.0" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="json4s-native_2.11" type="jar" ext="jar" status="successful" details="" size="73872" time="1063" location="/home/isucon/.ivy2/cache/org.json4s/json4s-native_2.11/jars/json4s-native_2.11-3.3.0.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/json4s/json4s-native_2.11/3.3.0/json4s-native_2.11-3.3.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.json4s" name="json4s-core_2.11">
+			<revision name="3.3.0" status="release" pubdate="20151003222315" resolver="jcenter" artresolver="jcenter" homepage="https://github.com/json4s/json4s" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="25">
+				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="2367" time="659" location="/home/isucon/.ivy2/cache/org.json4s/json4s-core_2.11/ivy-3.3.0.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/org.json4s/json4s-core_2.11/ivy-3.3.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/json4s/json4s-core_2.11/3.3.0/json4s-core_2.11-3.3.0.pom"/>
+				<caller organisation="org.json4s" name="json4s-native_2.11" conf="default, compile, runtime, master" rev="3.3.0" rev-constraint-default="3.3.0" rev-constraint-dynamic="3.3.0" callerrev="3.3.0"/>
+				<artifacts>
+					<artifact name="json4s-core_2.11" type="jar" ext="jar" status="successful" details="" size="615848" time="3231" location="/home/isucon/.ivy2/cache/org.json4s/json4s-core_2.11/jars/json4s-core_2.11-3.3.0.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/json4s/json4s-core_2.11/3.3.0/json4s-core_2.11-3.3.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang.modules" name="scala-xml_2.11">
+			<revision name="1.0.5" status="release" pubdate="20151031073334" resolver="jcenter" artresolver="jcenter" homepage="http://www.scala-lang.org/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="29">
+				<license name="BSD 3-clause" url="http://opensource.org/licenses/BSD-3-Clause"/>
+				<metadata-artifact status="successful" details="" size="2518" time="671" location="/home/isucon/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/ivy-1.0.5.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/ivy-1.0.5.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/scala-lang/modules/scala-xml_2.11/1.0.5/scala-xml_2.11-1.0.5.pom"/>
+				<caller organisation="org.json4s" name="json4s-core_2.11" conf="compile, runtime" rev="1.0.5" rev-constraint-default="1.0.5" rev-constraint-dynamic="1.0.5" callerrev="3.3.0"/>
+				<caller organisation="org.scalatra.scalate" name="scalate-util_2.11" conf="compile, runtime" rev="1.0.1" rev-constraint-default="1.0.1" rev-constraint-dynamic="1.0.1" callerrev="1.7.1"/>
+				<caller organisation="org.scala-lang" name="scala-compiler" conf="compile, runtime" rev="1.0.4" rev-constraint-default="1.0.4" rev-constraint-dynamic="1.0.4" callerrev="2.11.7"/>
+				<artifacts>
+					<artifact name="scala-xml_2.11" type="bundle" ext="jar" status="successful" details="" size="671138" time="3369" location="/home/isucon/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.5.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/scala-lang/modules/scala-xml_2.11/1.0.5/scala-xml_2.11-1.0.5.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="1.0.4" status="release" pubdate="20151031073317" resolver="jcenter" artresolver="jcenter" evicted="latest-revision" evicted-reason="" homepage="http://www.scala-lang.org/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<license name="BSD 3-clause" url="http://opensource.org/licenses/BSD-3-Clause"/>
+				<metadata-artifact status="successful" details="" size="2518" time="665" location="/home/isucon/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/ivy-1.0.4.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/ivy-1.0.4.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/scala-lang/modules/scala-xml_2.11/1.0.4/scala-xml_2.11-1.0.4.pom"/>
+				<evicted-by rev="1.0.5"/>
+				<caller organisation="org.scalatra.scalate" name="scalate-util_2.11" conf="compile, runtime" rev="1.0.1" rev-constraint-default="1.0.1" rev-constraint-dynamic="1.0.1" callerrev="1.7.1"/>
+				<caller organisation="org.scala-lang" name="scala-compiler" conf="compile, runtime" rev="1.0.4" rev-constraint-default="1.0.4" rev-constraint-dynamic="1.0.4" callerrev="2.11.7"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+			<revision name="1.0.1" status="release" pubdate="20151031073314" resolver="jcenter" artresolver="jcenter" evicted="latest-revision" evicted-reason="" homepage="http://www.scala-lang.org/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<license name="BSD 3-clause" url="http://opensource.org/licenses/BSD-3-Clause"/>
+				<metadata-artifact status="successful" details="" size="2518" time="632" location="/home/isucon/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/ivy-1.0.1.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/ivy-1.0.1.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/scala-lang/modules/scala-xml_2.11/1.0.1/scala-xml_2.11-1.0.1.pom"/>
+				<evicted-by rev="1.0.4"/>
+				<caller organisation="org.scalatra.scalate" name="scalate-util_2.11" conf="compile, runtime" rev="1.0.1" rev-constraint-default="1.0.1" rev-constraint-dynamic="1.0.1" callerrev="1.7.1"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.thoughtworks.paranamer" name="paranamer">
+			<revision name="2.8" status="release" pubdate="20151031073328" resolver="jcenter" artresolver="jcenter" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="28">
+				<metadata-artifact status="successful" details="" size="5274" time="630" location="/home/isucon/.ivy2/cache/com.thoughtworks.paranamer/paranamer/ivy-2.8.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/com.thoughtworks.paranamer/paranamer/ivy-2.8.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/com/thoughtworks/paranamer/paranamer/2.8/paranamer-2.8.pom"/>
+				<caller organisation="org.json4s" name="json4s-core_2.11" conf="compile, runtime" rev="2.8" rev-constraint-default="2.8" rev-constraint-dynamic="2.8" callerrev="3.3.0"/>
+				<caller organisation="com.fasterxml.jackson.module" name="jackson-module-paranamer" conf="compile, runtime" rev="2.6" rev-constraint-default="2.6" rev-constraint-dynamic="2.6" callerrev="2.6.1"/>
+				<artifacts>
+					<artifact name="paranamer" type="bundle" ext="jar" status="successful" details="" size="34654" time="745" location="/home/isucon/.ivy2/cache/com.thoughtworks.paranamer/paranamer/bundles/paranamer-2.8.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/com/thoughtworks/paranamer/paranamer/2.8/paranamer-2.8.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="2.6" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="2.8"/>
+				<caller organisation="com.fasterxml.jackson.module" name="jackson-module-paranamer" conf="compile, runtime" rev="2.6" rev-constraint-default="2.6" rev-constraint-dynamic="2.6" callerrev="2.6.1"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.json4s" name="json4s-scalap_2.11">
+			<revision name="3.3.0" status="release" pubdate="20151031073327" resolver="jcenter" artresolver="jcenter" homepage="https://github.com/json4s/json4s" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="27">
+				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="1651" time="698" location="/home/isucon/.ivy2/cache/org.json4s/json4s-scalap_2.11/ivy-3.3.0.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/org.json4s/json4s-scalap_2.11/ivy-3.3.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/json4s/json4s-scalap_2.11/3.3.0/json4s-scalap_2.11-3.3.0.pom"/>
+				<caller organisation="org.json4s" name="json4s-core_2.11" conf="compile, runtime" rev="3.3.0" rev-constraint-default="3.3.0" rev-constraint-dynamic="3.3.0" callerrev="3.3.0"/>
+				<artifacts>
+					<artifact name="json4s-scalap_2.11" type="jar" ext="jar" status="successful" details="" size="607724" time="3360" location="/home/isucon/.ivy2/cache/org.json4s/json4s-scalap_2.11/jars/json4s-scalap_2.11-3.3.0.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/json4s/json4s-scalap_2.11/3.3.0/json4s-scalap_2.11-3.3.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.json4s" name="json4s-ast_2.11">
+			<revision name="3.3.0" status="release" pubdate="20151031073326" resolver="jcenter" artresolver="jcenter" homepage="https://github.com/json4s/json4s" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="26">
+				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="1642" time="643" location="/home/isucon/.ivy2/cache/org.json4s/json4s-ast_2.11/ivy-3.3.0.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/org.json4s/json4s-ast_2.11/ivy-3.3.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/json4s/json4s-ast_2.11/3.3.0/json4s-ast_2.11-3.3.0.pom"/>
+				<caller organisation="org.json4s" name="json4s-core_2.11" conf="compile, runtime" rev="3.3.0" rev-constraint-default="3.3.0" rev-constraint-dynamic="3.3.0" callerrev="3.3.0"/>
+				<artifacts>
+					<artifact name="json4s-ast_2.11" type="jar" ext="jar" status="successful" details="" size="87091" time="1050" location="/home/isucon/.ivy2/cache/org.json4s/json4s-ast_2.11/jars/json4s-ast_2.11-3.3.0.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/json4s/json4s-ast_2.11/3.3.0/json4s-ast_2.11-3.3.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.postgresql" name="postgresql">
+			<revision name="9.4-1201-jdbc41" status="release" pubdate="20151031073323" resolver="jcenter" artresolver="jcenter" homepage="http://jdbc.postgresql.org" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="23">
+				<license name="The PostgreSQL License" url="http://www.postgresql.org/about/licence/"/>
+				<metadata-artifact status="successful" details="" size="2716" time="639" location="/home/isucon/.ivy2/cache/org.postgresql/postgresql/ivy-9.4-1201-jdbc41.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/org.postgresql/postgresql/ivy-9.4-1201-jdbc41.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/postgresql/postgresql/9.4-1201-jdbc41/postgresql-9.4-1201-jdbc41.pom"/>
+				<caller organisation="isucon5-final-scala" name="isucon5-final-scala" conf="compile, runtime-internal, runtime, optional" rev="9.4-1201-jdbc41" rev-constraint-default="9.4-1201-jdbc41" rev-constraint-dynamic="9.4-1201-jdbc41" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="postgresql" type="jar" ext="jar" status="successful" details="" size="648487" time="3731" location="/home/isucon/.ivy2/cache/org.postgresql/postgresql/jars/postgresql-9.4-1201-jdbc41.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/postgresql/postgresql/9.4-1201-jdbc41/postgresql-9.4-1201-jdbc41.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.skinny-framework" name="skinny-micro-server_2.11">
+			<revision name="0.9.12" status="release" pubdate="20151031073317" resolver="jcenter" artresolver="jcenter" homepage="http://skinny-framework.org/" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="11">
+				<license name="The BSD 2-Clause License" url="http://opensource.org/licenses/BSD-2-Clause"/>
+				<metadata-artifact status="successful" details="" size="3955" time="655" location="/home/isucon/.ivy2/cache/org.skinny-framework/skinny-micro-server_2.11/ivy-0.9.12.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/org.skinny-framework/skinny-micro-server_2.11/ivy-0.9.12.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/skinny-framework/skinny-micro-server_2.11/0.9.12/skinny-micro-server_2.11-0.9.12.pom"/>
+				<caller organisation="isucon5-final-scala" name="isucon5-final-scala" conf="compile, runtime-internal, runtime, optional" rev="0.9.12" rev-constraint-default="0.9.12" rev-constraint-dynamic="0.9.12" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="skinny-micro-server_2.11" type="jar" ext="jar" status="successful" details="" size="22608" time="1028" location="/home/isucon/.ivy2/cache/org.skinny-framework/skinny-micro-server_2.11/jars/skinny-micro-server_2.11-0.9.12.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/skinny-framework/skinny-micro-server_2.11/0.9.12/skinny-micro-server_2.11-0.9.12.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.eclipse.jetty" name="jetty-webapp">
+			<revision name="9.2.13.v20150730" status="release" pubdate="20151031073120" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.eclipse.org/jetty" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="13">
+				<metadata-artifact status="no" details="" size="11810" time="0" location="/home/isucon/.ivy2/cache/org.eclipse.jetty/jetty-webapp/ivy-9.2.13.v20150730.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/eclipse/jetty/jetty-webapp/9.2.13.v20150730/jetty-webapp-9.2.13.v20150730.pom"/>
+				<caller organisation="org.skinny-framework" name="skinny-micro-server_2.11" conf="default, compile, runtime, master" rev="9.2.13.v20150730" rev-constraint-default="9.2.13.v20150730" rev-constraint-dynamic="9.2.13.v20150730" callerrev="0.9.12"/>
+				<artifacts>
+					<artifact name="jetty-webapp" type="jar" ext="jar" status="no" details="" size="107866" time="0" location="/home/isucon/.ivy2/cache/org.eclipse.jetty/jetty-webapp/jars/jetty-webapp-9.2.13.v20150730.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/eclipse/jetty/jetty-webapp/9.2.13.v20150730/jetty-webapp-9.2.13.v20150730.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.eclipse.jetty" name="jetty-servlet">
+			<revision name="9.2.13.v20150730" status="release" pubdate="20151031073036" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.eclipse.org/jetty" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="16">
+				<metadata-artifact status="no" details="" size="11652" time="0" location="/home/isucon/.ivy2/cache/org.eclipse.jetty/jetty-servlet/ivy-9.2.13.v20150730.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/eclipse/jetty/jetty-servlet/9.2.13.v20150730/jetty-servlet-9.2.13.v20150730.pom"/>
+				<caller organisation="org.skinny-framework" name="skinny-micro-server_2.11" conf="default, compile, runtime, master" rev="9.2.13.v20150730" rev-constraint-default="9.2.13.v20150730" rev-constraint-dynamic="9.2.13.v20150730" callerrev="0.9.12"/>
+				<caller organisation="org.eclipse.jetty" name="jetty-webapp" conf="compile, runtime" rev="9.2.13.v20150730" rev-constraint-default="9.2.13.v20150730" rev-constraint-dynamic="9.2.13.v20150730" callerrev="9.2.13.v20150730"/>
+				<artifacts>
+					<artifact name="jetty-servlet" type="jar" ext="jar" status="no" details="" size="115670" time="0" location="/home/isucon/.ivy2/cache/org.eclipse.jetty/jetty-servlet/jars/jetty-servlet-9.2.13.v20150730.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/eclipse/jetty/jetty-servlet/9.2.13.v20150730/jetty-servlet-9.2.13.v20150730.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.eclipse.jetty" name="jetty-security">
+			<revision name="9.2.13.v20150730" status="release" pubdate="20151031073050" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.eclipse.org/jetty" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="17">
+				<metadata-artifact status="no" details="" size="11522" time="0" location="/home/isucon/.ivy2/cache/org.eclipse.jetty/jetty-security/ivy-9.2.13.v20150730.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/eclipse/jetty/jetty-security/9.2.13.v20150730/jetty-security-9.2.13.v20150730.pom"/>
+				<caller organisation="org.eclipse.jetty" name="jetty-servlet" conf="compile, runtime" rev="9.2.13.v20150730" rev-constraint-default="9.2.13.v20150730" rev-constraint-dynamic="9.2.13.v20150730" callerrev="9.2.13.v20150730"/>
+				<artifacts>
+					<artifact name="jetty-security" type="jar" ext="jar" status="no" details="" size="95927" time="0" location="/home/isucon/.ivy2/cache/org.eclipse.jetty/jetty-security/jars/jetty-security-9.2.13.v20150730.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/eclipse/jetty/jetty-security/9.2.13.v20150730/jetty-security-9.2.13.v20150730.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.eclipse.jetty" name="jetty-server">
+			<revision name="9.2.13.v20150730" status="release" pubdate="20151031073054" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.eclipse.org/jetty" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="18">
+				<metadata-artifact status="no" details="" size="12315" time="0" location="/home/isucon/.ivy2/cache/org.eclipse.jetty/jetty-server/ivy-9.2.13.v20150730.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/eclipse/jetty/jetty-server/9.2.13.v20150730/jetty-server-9.2.13.v20150730.pom"/>
+				<caller organisation="org.skinny-framework" name="skinny-micro-server_2.11" conf="default, compile, runtime, master" rev="9.2.13.v20150730" rev-constraint-default="9.2.13.v20150730" rev-constraint-dynamic="9.2.13.v20150730" callerrev="0.9.12"/>
+				<caller organisation="org.eclipse.jetty" name="jetty-security" conf="compile, runtime" rev="9.2.13.v20150730" rev-constraint-default="9.2.13.v20150730" rev-constraint-dynamic="9.2.13.v20150730" callerrev="9.2.13.v20150730"/>
+				<artifacts>
+					<artifact name="jetty-server" type="jar" ext="jar" status="no" details="" size="418791" time="0" location="/home/isucon/.ivy2/cache/org.eclipse.jetty/jetty-server/jars/jetty-server-9.2.13.v20150730.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/eclipse/jetty/jetty-server/9.2.13.v20150730/jetty-server-9.2.13.v20150730.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.eclipse.jetty" name="jetty-io">
+			<revision name="9.2.13.v20150730" status="release" pubdate="20151031073116" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.eclipse.org/jetty" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="20">
+				<metadata-artifact status="no" details="" size="11626" time="0" location="/home/isucon/.ivy2/cache/org.eclipse.jetty/jetty-io/ivy-9.2.13.v20150730.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/eclipse/jetty/jetty-io/9.2.13.v20150730/jetty-io-9.2.13.v20150730.pom"/>
+				<caller organisation="org.eclipse.jetty" name="jetty-server" conf="compile, runtime" rev="9.2.13.v20150730" rev-constraint-default="9.2.13.v20150730" rev-constraint-dynamic="9.2.13.v20150730" callerrev="9.2.13.v20150730"/>
+				<artifacts>
+					<artifact name="jetty-io" type="jar" ext="jar" status="no" details="" size="108315" time="0" location="/home/isucon/.ivy2/cache/org.eclipse.jetty/jetty-io/jars/jetty-io-9.2.13.v20150730.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/eclipse/jetty/jetty-io/9.2.13.v20150730/jetty-io-9.2.13.v20150730.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.eclipse.jetty" name="jetty-http">
+			<revision name="9.2.13.v20150730" status="release" pubdate="20151031073107" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.eclipse.org/jetty" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="19">
+				<metadata-artifact status="no" details="" size="11407" time="0" location="/home/isucon/.ivy2/cache/org.eclipse.jetty/jetty-http/ivy-9.2.13.v20150730.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/eclipse/jetty/jetty-http/9.2.13.v20150730/jetty-http-9.2.13.v20150730.pom"/>
+				<caller organisation="org.eclipse.jetty" name="jetty-server" conf="compile, runtime" rev="9.2.13.v20150730" rev-constraint-default="9.2.13.v20150730" rev-constraint-dynamic="9.2.13.v20150730" callerrev="9.2.13.v20150730"/>
+				<artifacts>
+					<artifact name="jetty-http" type="jar" ext="jar" status="no" details="" size="105859" time="0" location="/home/isucon/.ivy2/cache/org.eclipse.jetty/jetty-http/jars/jetty-http-9.2.13.v20150730.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/eclipse/jetty/jetty-http/9.2.13.v20150730/jetty-http-9.2.13.v20150730.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.eclipse.jetty" name="jetty-xml">
+			<revision name="9.2.13.v20150730" status="release" pubdate="20151031073123" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.eclipse.org/jetty" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="14">
+				<metadata-artifact status="no" details="" size="11446" time="0" location="/home/isucon/.ivy2/cache/org.eclipse.jetty/jetty-xml/ivy-9.2.13.v20150730.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/eclipse/jetty/jetty-xml/9.2.13.v20150730/jetty-xml-9.2.13.v20150730.pom"/>
+				<caller organisation="org.eclipse.jetty" name="jetty-webapp" conf="compile, runtime" rev="9.2.13.v20150730" rev-constraint-default="9.2.13.v20150730" rev-constraint-dynamic="9.2.13.v20150730" callerrev="9.2.13.v20150730"/>
+				<artifacts>
+					<artifact name="jetty-xml" type="jar" ext="jar" status="no" details="" size="44135" time="0" location="/home/isucon/.ivy2/cache/org.eclipse.jetty/jetty-xml/jars/jetty-xml-9.2.13.v20150730.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/eclipse/jetty/jetty-xml/9.2.13.v20150730/jetty-xml-9.2.13.v20150730.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.eclipse.jetty" name="jetty-util">
+			<revision name="9.2.13.v20150730" status="release" pubdate="20151031073112" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.eclipse.org/jetty" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="15">
+				<metadata-artifact status="no" details="" size="11897" time="0" location="/home/isucon/.ivy2/cache/org.eclipse.jetty/jetty-util/ivy-9.2.13.v20150730.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/eclipse/jetty/jetty-util/9.2.13.v20150730/jetty-util-9.2.13.v20150730.pom"/>
+				<caller organisation="org.eclipse.jetty" name="jetty-http" conf="compile, runtime" rev="9.2.13.v20150730" rev-constraint-default="9.2.13.v20150730" rev-constraint-dynamic="9.2.13.v20150730" callerrev="9.2.13.v20150730"/>
+				<caller organisation="org.eclipse.jetty" name="jetty-xml" conf="compile, runtime" rev="9.2.13.v20150730" rev-constraint-default="9.2.13.v20150730" rev-constraint-dynamic="9.2.13.v20150730" callerrev="9.2.13.v20150730"/>
+				<caller organisation="org.eclipse.jetty" name="jetty-io" conf="compile, runtime" rev="9.2.13.v20150730" rev-constraint-default="9.2.13.v20150730" rev-constraint-dynamic="9.2.13.v20150730" callerrev="9.2.13.v20150730"/>
+				<artifacts>
+					<artifact name="jetty-util" type="jar" ext="jar" status="no" details="" size="358143" time="0" location="/home/isucon/.ivy2/cache/org.eclipse.jetty/jetty-util/jars/jetty-util-9.2.13.v20150730.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/eclipse/jetty/jetty-util/9.2.13.v20150730/jetty-util-9.2.13.v20150730.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="javax.servlet" name="javax.servlet-api">
+			<revision name="3.1.0" status="release" pubdate="20151031073058" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://servlet-spec.java.net" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="12">
+				<license name="CDDL + GPLv2 with classpath exception" url="https://glassfish.dev.java.net/nonav/public/CDDL+GPL.html"/>
+				<metadata-artifact status="no" details="" size="4276" time="0" location="/home/isucon/.ivy2/cache/javax.servlet/javax.servlet-api/ivy-3.1.0.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.pom"/>
+				<caller organisation="org.skinny-framework" name="skinny-micro-server_2.11" conf="default, compile, runtime, master" rev="3.1.0" rev-constraint-default="3.1.0" rev-constraint-dynamic="3.1.0" callerrev="0.9.12"/>
+				<caller organisation="org.eclipse.jetty" name="jetty-server" conf="compile, runtime" rev="3.1.0" rev-constraint-default="3.1.0" rev-constraint-dynamic="3.1.0" callerrev="9.2.13.v20150730"/>
+				<artifacts>
+					<artifact name="javax.servlet-api" type="jar" ext="jar" status="no" details="" size="95806" time="0" location="/home/isucon/.ivy2/cache/javax.servlet/javax.servlet-api/jars/javax.servlet-api-3.1.0.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-compiler">
+			<revision name="2.11.7" status="release" pubdate="20151031073315" resolver="jcenter" artresolver="jcenter" homepage="http://www.scala-lang.org/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="9">
+				<license name="BSD 3-Clause" url="http://www.scala-lang.org/license.html"/>
+				<metadata-artifact status="successful" details="" size="2365" time="635" location="/home/isucon/.ivy2/cache/org.scala-lang/scala-compiler/ivy-2.11.7.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/org.scala-lang/scala-compiler/ivy-2.11.7.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/scala-lang/scala-compiler/2.11.7/scala-compiler-2.11.7.pom"/>
+				<caller organisation="org.scalatra.scalate" name="scalate-core_2.11" conf="compile, runtime" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.0" callerrev="1.7.1"/>
+				<artifacts>
+					<artifact name="scala-compiler" type="jar" ext="jar" status="successful" details="" size="15244851" time="10984" location="/home/isucon/.ivy2/cache/org.scala-lang/scala-compiler/jars/scala-compiler-2.11.7.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/scala-lang/scala-compiler/2.11.7/scala-compiler-2.11.7.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-reflect">
+			<revision name="2.11.7" status="release" pubdate="20151031073316" resolver="jcenter" artresolver="jcenter" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.11.7/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="10">
+				<license name="BSD 3-Clause" url="http://www.scala-lang.org/license.html"/>
+				<metadata-artifact status="successful" details="" size="1568" time="633" location="/home/isucon/.ivy2/cache/org.scala-lang/scala-reflect/ivy-2.11.7.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/org.scala-lang/scala-reflect/ivy-2.11.7.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7.pom"/>
+				<caller organisation="com.fasterxml.jackson.module" name="jackson-module-scala_2.11" conf="default, compile, runtime, master" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="2.6.1"/>
+				<caller organisation="org.scala-lang" name="scala-compiler" conf="compile, runtime" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="2.11.7"/>
+				<artifacts>
+					<artifact name="scala-reflect" type="jar" ext="jar" status="successful" details="" size="4576443" time="4444" location="/home/isucon/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.11.7.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.skinny-framework" name="skinny-micro-scalate_2.11">
+			<revision name="0.9.12" status="release" pubdate="20151031073306" resolver="jcenter" artresolver="jcenter" homepage="http://skinny-framework.org/" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="6">
+				<license name="The BSD 2-Clause License" url="http://opensource.org/licenses/BSD-2-Clause"/>
+				<metadata-artifact status="successful" details="" size="4407" time="653" location="/home/isucon/.ivy2/cache/org.skinny-framework/skinny-micro-scalate_2.11/ivy-0.9.12.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/org.skinny-framework/skinny-micro-scalate_2.11/ivy-0.9.12.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/skinny-framework/skinny-micro-scalate_2.11/0.9.12/skinny-micro-scalate_2.11-0.9.12.pom"/>
+				<caller organisation="isucon5-final-scala" name="isucon5-final-scala" conf="compile, runtime-internal, runtime, optional" rev="0.9.12" rev-constraint-default="0.9.12" rev-constraint-dynamic="0.9.12" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="skinny-micro-scalate_2.11" type="jar" ext="jar" status="successful" details="" size="48223" time="879" location="/home/isucon/.ivy2/cache/org.skinny-framework/skinny-micro-scalate_2.11/jars/skinny-micro-scalate_2.11-0.9.12.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/skinny-framework/skinny-micro-scalate_2.11/0.9.12/skinny-micro-scalate_2.11-0.9.12.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scalatra.scalate" name="scalate-core_2.11">
+			<revision name="1.7.1" status="release" pubdate="20150316111900" resolver="jcenter" artresolver="jcenter" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="7">
+				<metadata-artifact status="successful" details="" size="6194" time="659" location="/home/isucon/.ivy2/cache/org.scalatra.scalate/scalate-core_2.11/ivy-1.7.1.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/org.scalatra.scalate/scalate-core_2.11/ivy-1.7.1.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/scalatra/scalate/scalate-core_2.11/1.7.1/scalate-core_2.11-1.7.1.pom"/>
+				<caller organisation="org.skinny-framework" name="skinny-micro-scalate_2.11" conf="default, compile, runtime, master" rev="1.7.1" rev-constraint-default="1.7.1" rev-constraint-dynamic="1.7.1" callerrev="0.9.12"/>
+				<artifacts>
+					<artifact name="scalate-core_2.11" type="bundle" ext="jar" status="successful" details="" size="1968230" time="4930" location="/home/isucon/.ivy2/cache/org.scalatra.scalate/scalate-core_2.11/bundles/scalate-core_2.11-1.7.1.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/scalatra/scalate/scalate-core_2.11/1.7.1/scalate-core_2.11-1.7.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scalatra.scalate" name="scalate-util_2.11">
+			<revision name="1.7.1" status="release" pubdate="20151031073313" resolver="jcenter" artresolver="jcenter" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="8">
+				<metadata-artifact status="successful" details="" size="2789" time="641" location="/home/isucon/.ivy2/cache/org.scalatra.scalate/scalate-util_2.11/ivy-1.7.1.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/org.scalatra.scalate/scalate-util_2.11/ivy-1.7.1.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/scalatra/scalate/scalate-util_2.11/1.7.1/scalate-util_2.11-1.7.1.pom"/>
+				<caller organisation="org.scalatra.scalate" name="scalate-core_2.11" conf="compile, runtime" rev="1.7.1" rev-constraint-default="1.7.1" rev-constraint-dynamic="1.7.1" callerrev="1.7.1"/>
+				<artifacts>
+					<artifact name="scalate-util_2.11" type="bundle" ext="jar" status="successful" details="" size="303890" time="2167" location="/home/isucon/.ivy2/cache/org.scalatra.scalate/scalate-util_2.11/bundles/scalate-util_2.11-1.7.1.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/scalatra/scalate/scalate-util_2.11/1.7.1/scalate-util_2.11-1.7.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.skinny-framework" name="skinny-micro_2.11">
+			<revision name="0.9.12" status="release" pubdate="20151031073258" resolver="jcenter" artresolver="jcenter" homepage="http://skinny-framework.org/" downloaded="true" searched="true" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="1">
+				<license name="The BSD 2-Clause License" url="http://opensource.org/licenses/BSD-2-Clause"/>
+				<metadata-artifact status="successful" details="" size="3749" time="665" location="/home/isucon/.ivy2/cache/org.skinny-framework/skinny-micro_2.11/ivy-0.9.12.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/org.skinny-framework/skinny-micro_2.11/ivy-0.9.12.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/skinny-framework/skinny-micro_2.11/0.9.12/skinny-micro_2.11-0.9.12.pom"/>
+				<caller organisation="org.skinny-framework" name="skinny-micro-server_2.11" conf="default, compile, runtime, master" rev="0.9.12" rev-constraint-default="0.9.12" rev-constraint-dynamic="0.9.12" callerrev="0.9.12"/>
+				<caller organisation="isucon5-final-scala" name="isucon5-final-scala" conf="compile, runtime-internal, runtime, optional" rev="0.9.12" rev-constraint-default="0.9.12" rev-constraint-dynamic="0.9.12" callerrev="1.0"/>
+				<caller organisation="org.skinny-framework" name="skinny-micro-scalate_2.11" conf="default, compile, runtime, master" rev="0.9.12" rev-constraint-default="0.9.12" rev-constraint-dynamic="0.9.12" callerrev="0.9.12"/>
+				<artifacts>
+					<artifact name="skinny-micro_2.11" type="jar" ext="jar" status="successful" details="" size="1840673" time="4416" location="/home/isucon/.ivy2/cache/org.skinny-framework/skinny-micro_2.11/jars/skinny-micro_2.11-0.9.12.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/skinny-framework/skinny-micro_2.11/0.9.12/skinny-micro_2.11-0.9.12.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang.modules" name="scala-parser-combinators_2.11">
+			<revision name="1.0.4" status="release" pubdate="20151031073305" resolver="jcenter" artresolver="jcenter" homepage="http://www.scala-lang.org/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="5">
+				<license name="BSD 3-clause" url="http://opensource.org/licenses/BSD-3-Clause"/>
+				<metadata-artifact status="successful" details="" size="2156" time="651" location="/home/isucon/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/ivy-1.0.4.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/ivy-1.0.4.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.4/scala-parser-combinators_2.11-1.0.4.pom"/>
+				<caller organisation="org.scalatra.scalate" name="scalate-util_2.11" conf="compile, runtime" rev="1.0.1" rev-constraint-default="1.0.1" rev-constraint-dynamic="1.0.1" callerrev="1.7.1"/>
+				<caller organisation="org.xerial" name="xerial-core" conf="default, compile, runtime, master" rev="1.0.3" rev-constraint-default="1.0.3" rev-constraint-dynamic="1.0.3" callerrev="3.3.8"/>
+				<caller organisation="org.skinny-framework" name="skinny-micro_2.11" conf="default, compile, runtime, master" rev="1.0.4" rev-constraint-default="1.0.4" rev-constraint-dynamic="1.0.4" callerrev="0.9.12"/>
+				<caller organisation="org.scala-lang" name="scala-compiler" conf="compile, runtime" rev="1.0.4" rev-constraint-default="1.0.4" rev-constraint-dynamic="1.0.4" callerrev="2.11.7"/>
+				<artifacts>
+					<artifact name="scala-parser-combinators_2.11" type="bundle" ext="jar" status="successful" details="" size="423753" time="2979" location="/home/isucon/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.4.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.4/scala-parser-combinators_2.11-1.0.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="1.0.3" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="1.0.4"/>
+				<caller organisation="org.xerial" name="xerial-core" conf="default, compile, runtime, master" rev="1.0.3" rev-constraint-default="1.0.3" rev-constraint-dynamic="1.0.3" callerrev="3.3.8"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+			<revision name="1.0.1" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="1.0.4"/>
+				<caller organisation="org.scalatra.scalate" name="scalate-util_2.11" conf="compile, runtime" rev="1.0.1" rev-constraint-default="1.0.1" rev-constraint-dynamic="1.0.1" callerrev="1.7.1"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.googlecode.juniversalchardet" name="juniversalchardet">
+			<revision name="1.0.3" status="release" pubdate="20151031073304" resolver="jcenter" artresolver="jcenter" homepage="http://juniversalchardet.googlecode.com/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="4">
+				<license name="Mozilla Public License 1.1 (MPL 1.1)" url="http://www.mozilla.org/MPL/MPL-1.1.html"/>
+				<metadata-artifact status="successful" details="" size="1463" time="691" location="/home/isucon/.ivy2/cache/com.googlecode.juniversalchardet/juniversalchardet/ivy-1.0.3.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/com.googlecode.juniversalchardet/juniversalchardet/ivy-1.0.3.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/com/googlecode/juniversalchardet/juniversalchardet/1.0.3/juniversalchardet-1.0.3.pom"/>
+				<caller organisation="org.skinny-framework" name="skinny-micro_2.11" conf="default, compile, runtime, master" rev="1.0.3" rev-constraint-default="1.0.3" rev-constraint-dynamic="1.0.3" callerrev="0.9.12"/>
+				<artifacts>
+					<artifact name="juniversalchardet" type="jar" ext="jar" status="successful" details="" size="220813" time="2225" location="/home/isucon/.ivy2/cache/com.googlecode.juniversalchardet/juniversalchardet/jars/juniversalchardet-1.0.3.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/com/googlecode/juniversalchardet/juniversalchardet/1.0.3/juniversalchardet-1.0.3.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.skinny-framework" name="skinny-micro-common_2.11">
+			<revision name="0.9.12" status="release" pubdate="20151031073259" resolver="jcenter" artresolver="jcenter" homepage="http://skinny-framework.org/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="2">
+				<license name="The BSD 2-Clause License" url="http://opensource.org/licenses/BSD-2-Clause"/>
+				<metadata-artifact status="successful" details="" size="2729" time="635" location="/home/isucon/.ivy2/cache/org.skinny-framework/skinny-micro-common_2.11/ivy-0.9.12.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/org.skinny-framework/skinny-micro-common_2.11/ivy-0.9.12.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/skinny-framework/skinny-micro-common_2.11/0.9.12/skinny-micro-common_2.11-0.9.12.pom"/>
+				<caller organisation="org.skinny-framework" name="skinny-micro_2.11" conf="default, compile, runtime, master" rev="0.9.12" rev-constraint-default="0.9.12" rev-constraint-dynamic="0.9.12" callerrev="0.9.12"/>
+				<artifacts>
+					<artifact name="skinny-micro-common_2.11" type="jar" ext="jar" status="successful" details="" size="42691" time="624" location="/home/isucon/.ivy2/cache/org.skinny-framework/skinny-micro-common_2.11/jars/skinny-micro-common_2.11-0.9.12.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/skinny-framework/skinny-micro-common_2.11/0.9.12/skinny-micro-common_2.11-0.9.12.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="ch.qos.logback" name="logback-classic">
+			<revision name="1.1.3" status="release" pubdate="20150324200100" resolver="jcenter" artresolver="jcenter" homepage="" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="21">
+				<metadata-artifact status="successful" details="" size="12711" time="629" location="/home/isucon/.ivy2/cache/ch.qos.logback/logback-classic/ivy-1.1.3.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/ch.qos.logback/logback-classic/ivy-1.1.3.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/ch/qos/logback/logback-classic/1.1.3/logback-classic-1.1.3.pom"/>
+				<caller organisation="isucon5-final-scala" name="isucon5-final-scala" conf="compile, runtime-internal, runtime, optional" rev="1.1.3" rev-constraint-default="1.1.3" rev-constraint-dynamic="1.1.3" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="logback-classic" type="jar" ext="jar" status="successful" details="" size="280928" time="2549" location="/home/isucon/.ivy2/cache/ch.qos.logback/logback-classic/jars/logback-classic-1.1.3.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/ch/qos/logback/logback-classic/1.1.3/logback-classic-1.1.3.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="ch.qos.logback" name="logback-core">
+			<revision name="1.1.3" status="release" pubdate="20151031073322" resolver="jcenter" artresolver="jcenter" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="22">
+				<metadata-artifact status="successful" details="" size="4191" time="654" location="/home/isucon/.ivy2/cache/ch.qos.logback/logback-core/ivy-1.1.3.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/ch.qos.logback/logback-core/ivy-1.1.3.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/ch/qos/logback/logback-core/1.1.3/logback-core-1.1.3.pom"/>
+				<caller organisation="ch.qos.logback" name="logback-classic" conf="default, compile, runtime, master" rev="1.1.3" rev-constraint-default="1.1.3" rev-constraint-dynamic="1.1.3" callerrev="1.1.3"/>
+				<artifacts>
+					<artifact name="logback-core" type="jar" ext="jar" status="successful" details="" size="455041" time="3135" location="/home/isucon/.ivy2/cache/ch.qos.logback/logback-core/jars/logback-core-1.1.3.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/ch/qos/logback/logback-core/1.1.3/logback-core-1.1.3.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.slf4j" name="slf4j-api">
+			<revision name="1.7.12" status="release" pubdate="20151031073300" resolver="jcenter" artresolver="jcenter" homepage="http://www.slf4j.org" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="3">
+				<metadata-artifact status="successful" details="" size="2661" time="638" location="/home/isucon/.ivy2/cache/org.slf4j/slf4j-api/ivy-1.7.12.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/org.slf4j/slf4j-api/ivy-1.7.12.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/slf4j/slf4j-api/1.7.12/slf4j-api-1.7.12.pom"/>
+				<caller organisation="ch.qos.logback" name="logback-classic" conf="default, compile, runtime, master" rev="1.7.7" rev-constraint-default="1.7.7" rev-constraint-dynamic="1.7.7" callerrev="1.1.3"/>
+				<caller organisation="org.skinny-framework" name="skinny-micro_2.11" conf="default, compile, runtime, master" rev="1.7.12" rev-constraint-default="1.7.12" rev-constraint-dynamic="1.7.12" callerrev="0.9.12"/>
+				<caller organisation="org.skinny-framework" name="skinny-micro-common_2.11" conf="compile, runtime" rev="1.7.12" rev-constraint-default="1.7.12" rev-constraint-dynamic="1.7.12" callerrev="0.9.12"/>
+				<caller organisation="org.skinny-framework" name="skinny-micro-scalate_2.11" conf="default, compile, runtime, master" rev="1.7.12" rev-constraint-default="1.7.12" rev-constraint-dynamic="1.7.12" callerrev="0.9.12"/>
+				<artifacts>
+					<artifact name="slf4j-api" type="jar" ext="jar" status="successful" details="" size="32127" time="590" location="/home/isucon/.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.7.12.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/slf4j/slf4j-api/1.7.12/slf4j-api-1.7.12.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="1.7.7" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="1.7.12"/>
+				<caller organisation="ch.qos.logback" name="logback-classic" conf="default, compile, runtime, master" rev="1.7.7" rev-constraint-default="1.7.7" rev-constraint-dynamic="1.7.7" callerrev="1.1.3"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-library">
+			<revision name="2.11.7" status="release" pubdate="20151031073257" resolver="jcenter" artresolver="jcenter" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.11.7/" downloaded="true" searched="true" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="0">
+				<license name="BSD 3-Clause" url="http://www.scala-lang.org/license.html"/>
+				<metadata-artifact status="successful" details="" size="1424" time="636" location="/home/isucon/.ivy2/cache/org.scala-lang/scala-library/ivy-2.11.7.xml" searched="true" original-local-location="/home/isucon/.ivy2/cache/org.scala-lang/scala-library/ivy-2.11.7.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7.pom"/>
+				<caller organisation="org.json4s" name="json4s-core_2.11" conf="compile, runtime" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="3.3.0"/>
+				<caller organisation="org.json4s" name="json4s-native_2.11" conf="default, compile, runtime, master" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="3.3.0"/>
+				<caller organisation="org.scala-lang.modules" name="scala-xml_2.11" conf="compile, runtime" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="1.0.5"/>
+				<caller organisation="com.fasterxml.jackson.module" name="jackson-module-scala_2.11" conf="default, compile, runtime, master" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="2.6.1"/>
+				<caller organisation="org.skinny-framework" name="skinny-micro_2.11" conf="default, compile, runtime, master" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="0.9.12"/>
+				<caller organisation="org.scala-lang.modules" name="scala-xml_2.11" conf="compile" rev="2.11.0" rev-constraint-default="2.11.0" rev-constraint-dynamic="2.11.0" callerrev="1.0.1"/>
+				<caller organisation="isucon5-final-scala" name="isucon5-final-scala" conf="compile, runtime-internal, runtime, optional" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="1.0"/>
+				<caller organisation="org.scala-lang.modules" name="scala-xml_2.11" conf="compile, runtime" rev="2.11.4" rev-constraint-default="2.11.4" rev-constraint-dynamic="2.11.4" callerrev="1.0.4"/>
+				<caller organisation="com.github.nscala-time" name="nscala-time_2.11" conf="default, compile, runtime, master" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="2.2.0"/>
+				<caller organisation="org.scalatra.scalate" name="scalate-util_2.11" conf="compile, runtime" rev="2.11.0" rev-constraint-default="2.11.0" rev-constraint-dynamic="2.11.0" callerrev="1.7.1"/>
+				<caller organisation="org.xerial" name="xerial-core" conf="default, compile, runtime, master" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="3.3.8"/>
+				<caller organisation="org.scala-lang" name="scala-reflect" conf="compile, runtime" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="2.11.7"/>
+				<caller organisation="org.skinny-framework" name="skinny-micro-server_2.11" conf="default, compile, runtime, master" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="0.9.12"/>
+				<caller organisation="org.skinny-framework" name="skinny-micro-common_2.11" conf="compile, runtime" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="0.9.12"/>
+				<caller organisation="org.scala-lang.modules" name="scala-parser-combinators_2.11" conf="compile, runtime" rev="2.11.6" rev-constraint-default="2.11.6" rev-constraint-dynamic="2.11.6" callerrev="1.0.4"/>
+				<caller organisation="org.json4s" name="json4s-scalap_2.11" conf="compile, runtime" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="3.3.0"/>
+				<caller organisation="org.scala-lang" name="scala-compiler" conf="compile, runtime" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="2.11.7"/>
+				<caller organisation="org.json4s" name="json4s-ast_2.11" conf="compile, runtime" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="3.3.0"/>
+				<caller organisation="org.skinny-framework" name="skinny-micro-scalate_2.11" conf="default, compile, runtime, master" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="0.9.12"/>
+				<artifacts>
+					<artifact name="scala-library" type="jar" ext="jar" status="successful" details="" size="5745606" time="9324" location="/home/isucon/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.7.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="2.11.4" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="2.11.7"/>
+				<caller organisation="org.scala-lang.modules" name="scala-xml_2.11" conf="compile, runtime" rev="2.11.4" rev-constraint-default="2.11.4" rev-constraint-dynamic="2.11.4" callerrev="1.0.4"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+			<revision name="2.11.0" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="2.11.7"/>
+				<caller organisation="org.scalatra.scalate" name="scalate-util_2.11" conf="compile, runtime" rev="2.11.0" rev-constraint-default="2.11.0" rev-constraint-dynamic="2.11.0" callerrev="1.7.1"/>
+				<caller organisation="org.scala-lang.modules" name="scala-xml_2.11" conf="compile" rev="2.11.0" rev-constraint-default="2.11.0" rev-constraint-dynamic="2.11.0" callerrev="1.0.1"/>
+				<caller organisation="org.scala-lang.modules" name="scala-xml_2.11" conf="compile, runtime" rev="2.11.4" rev-constraint-default="2.11.4" rev-constraint-dynamic="2.11.4" callerrev="1.0.4"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+			<revision name="2.11.6" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="2.11.7"/>
+				<caller organisation="org.scala-lang.modules" name="scala-parser-combinators_2.11" conf="compile, runtime" rev="2.11.6" rev-constraint-default="2.11.6" rev-constraint-dynamic="2.11.6" callerrev="1.0.4"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>

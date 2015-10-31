@@ -1,0 +1,77 @@
+{
+   "abstract" : "DBI PostgreSQL interface",
+   "author" : [
+      "Greg Sabino Mullane <greg@turnstep.com>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "emacs, CPAN::Meta::Converter version 2.150005",
+   "keywords" : [
+      "Postgres",
+      "PostgreSQL",
+      "DBI",
+      "libpq",
+      "dbdpg"
+   ],
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "DBD-Pg",
+   "prereqs" : {
+      "build" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "0"
+         }
+      },
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "0"
+         }
+      },
+      "runtime" : {
+         "recommends" : {
+            "Cwd" : "0",
+            "Encode" : "0",
+            "File::Temp" : "0",
+            "Module::Signature" : "0.50"
+         },
+         "requires" : {
+            "DBI" : "1.614",
+            "ExtUtils::MakeMaker" : "6.11",
+            "Test::More" : "0.88",
+            "Time::HiRes" : "0",
+            "version" : "0"
+         }
+      }
+   },
+   "provides" : {
+      "Bundle::DBD::Pg" : {
+         "file" : "lib/Bundle/DBD/Pg.pm",
+         "version" : "v3.5.3"
+      },
+      "DBD::Pg" : {
+         "file" : "Pg.pm",
+         "version" : "v3.5.3"
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "http://rt.cpan.org/Public/Dist/Display.html?Name=DBD-Pg"
+      },
+      "homepage" : "http://search.cpan.org/dist/DBD-Pg/",
+      "license" : [
+         "http://dev.perl.org/licenses/"
+      ],
+      "repository" : {
+         "url" : "https://github.com/bucardo/dbdpg"
+      },
+      "x_IRC" : "irc://irc.freenode.net/#postgresql",
+      "x_MailingList" : "http://www.nntp.perl.org/group/perl.dbd.pg/"
+   },
+   "version" : "3.5.3",
+   "x_serialization_backend" : "JSON::PP version 2.27203"
+}

@@ -1,0 +1,33 @@
+{
+   "abstract" : "String::Util -- String processing utilities",
+   "author" : [
+      "Miko O'Sullivan <miko@idocs.com>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Module::Build version 0.4214",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "String-Util",
+   "prereqs" : {
+      "runtime" : {
+         "requires" : {
+            "Number::Misc" : "0",
+            "Test" : "0"
+         }
+      }
+   },
+   "provides" : {
+      "String::Util" : {
+         "file" : "lib/String/Util.pm",
+         "version" : "1.24"
+      }
+   },
+   "release_status" : "stable",
+   "version" : "1.24",
+   "x_serialization_backend" : "JSON::PP version 2.27203"
+}
