@@ -33,9 +33,10 @@ import (
 )
 
 var (
-	db      *sql.DB
-	store   *sessions.CookieStore
-	exCache = goCache.New(10*time.Second, 5*time.Second)
+	db         *sql.DB
+	store      *sessions.CookieStore
+	exCache    = goCache.New(10*time.Second, 5*time.Second)
+	tenkiCache = goCache.New(1*time.Second, 1*time.Second)
 )
 
 var kenCache map[string]Data
@@ -342,6 +343,12 @@ func fetchApi(method, uri string, headers, params map[string]string) map[string]
 	return data
 }
 
+func logcache(t0 time.Time) func(hit string, userID int, service string, key string) {
+	return func(hit string, userID int, service string, key string) {
+		log.Printf("cache:%s\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", hit, userID, service, key, time.Now().Sub(t0).Nanoseconds())
+	}
+}
+
 func GetData(w http.ResponseWriter, r *http.Request) {
 	stopwatch.Watch("GetData")
 	user := getCurrentUser(w, r)
@@ -411,67 +418,83 @@ func GetData(w http.ResponseWriter, r *http.Request) {
 		uri := fmt.Sprintf(*uriTemplate, ks...)
 
 		stopwatch.Watch(service + " start")
-		//t0 := time.Now()
+		lc := logcache(time.Now())
 
 		if service == "ken" {
 			key := ks2[0]
 			cache, ok := kenCache[key]
 			if ok {
 				data = append(data, cache)
-				//log.Printf("cache:hit\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, key, time.Now().Sub(t0).Nanoseconds())
+				lc("hit", user.ID, service, key)
 			} else {
 				d := Data{service, fetchApi(method, uri, headers, params)}
 				kenCache[key] = d
 				data = append(data, d)
-				//log.Printf("cache:miss\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, key, time.Now().Sub(t0).Nanoseconds())
+				lc("miss", user.ID, service, key)
 			}
 		} else if service == "ken2" {
 			q, _ := params["zipcode"]
 			cache, ok := ken2Cache[q]
 			if ok {
 				data = append(data, cache)
-				//log.Printf("cache:hit\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
+				lc("hit", user.ID, service, q)
 			} else {
 				d := Data{service, fetchApi(method, uri, headers, params)}
 				ken2Cache[q] = d
 				data = append(data, d)
-				//log.Printf("cache:miss\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
+				lc("miss", user.ID, service, q)
 			}
 		} else if service == "surname" {
 			q, _ := params["q"]
 			cache, ok := surnameCache[q]
 			if ok {
 				data = append(data, cache)
-				//log.Printf("cache:hit\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
+				lc("hit", user.ID, service, q)
 			} else {
 				d := Data{service, fetchApi(method, uri, headers, params)}
 				surnameCache[q] = d
 				data = append(data, d)
-				//log.Printf("cache:miss\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
+				lc("miss", user.ID, service, q)
 			}
 		} else if service == "givenname" {
 			q, _ := params["q"]
 			cache, ok := givennameCache[q]
 			if ok {
 				data = append(data, cache)
-				//log.Printf("cache:hit\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
+				lc("hit", user.ID, service, q)
 			} else {
 				d := Data{service, fetchApi(method, uri, headers, params)}
 				givennameCache[q] = d
 				data = append(data, d)
-				//log.Printf("cache:miss\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
+				lc("miss", user.ID, service, q)
+			}
+		} else if service == "tenki" {
+			q, _ := params["zipcode"]
+			cache, found := tenkiCache.Get(q)
+			if found {
+				data = append(data, cache.(Data))
+				lc("hit", user.ID, service, q)
+			} else {
+				d := Data{service, fetchApi(method, uri, headers, params)}
+				tenkiCache.Set(q, d, 1*time.Second)
+				data = append(data, d)
+				lc("miss", user.ID, service, q)
 			}
 		} else if service == "perfectsec_attacked" {
 			key := fmt.Sprintf("pa_%s", headers["X-PERFECT-SECURITY-TOKEN"])
-			tmp, found := exCache.Get(key)
-			if !found {
-				tmp = Data{service, fetchApi(method, uri, headers, params)}
-				exCache.Set(key, tmp, 10*time.Second)
+			cache, found := exCache.Get(key)
+			if found {
+				data = append(data, cache.(Data))
+				lc("hit", user.ID, service, key)
+			} else {
+				d := Data{service, fetchApi(method, uri, headers, params)}
+				exCache.Set(key, d, 10*time.Second)
+				data = append(data, d)
+				lc("miss", user.ID, service, key)
 			}
-			data = append(data, tmp.(Data))
 		} else {
 			data = append(data, Data{service, fetchApi(method, uri, headers, params)})
-			//log.Printf("cache:uncached\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, "-", time.Now().Sub(t0).Nanoseconds())
+			lc("uncached", user.ID, service, "-")
 		}
 		stopwatch.Watch(service + " finish")
 	}
@@ -491,6 +514,7 @@ func GetInitialize(w http.ResponseWriter, r *http.Request) {
 }
 
 var httpport = flag.Int("port", 0, "port to listen")
+var logpath = flag.String("logpath", "/tmp/app.log", "log path")
 
 func main() {
 	kenCache = map[string]Data{}
@@ -498,12 +522,12 @@ func main() {
 	surnameCache = map[string]Data{}
 	givennameCache = map[string]Data{}
 
-	//f, err := os.OpenFile("/tmp/req.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
-	//if err != nil {
-	//log.Fatalf("error opening file: %v", err)
-	//}
-	//defer f.Close()
-	//log.SetOutput(f)
+	f, err := os.OpenFile(*logpath, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	if err != nil {
+		log.Fatalf("error opening file: %v", err)
+	}
+	defer f.Close()
+	log.SetOutput(f)
 
 	flag.Parse()
 	host := os.Getenv("ISUCON5_DB_HOST")
