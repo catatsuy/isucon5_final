@@ -21,7 +21,6 @@ import (
 	"strconv"
 	"strings"
 	"syscall"
-	"time"
 
 	"github.com/gorilla/context"
 	"github.com/gorilla/mux"
@@ -287,13 +286,23 @@ func PostModify(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/modify", http.StatusSeeOther)
 }
 
+var (
+	sslClient = &http.Client{Transport: &http.Transport{
+		MaxIdleConnsPerHost: 6,
+		TLSClientConfig:     &tls.Config{InsecureSkipVerify: true},
+	}}
+	myClient = &http.Client{Transport: &http.Transport{
+		MaxIdleConnsPerHost: 6,
+	}}
+)
+
 func fetchApi(method, uri string, headers, params map[string]string) map[string]interface{} {
-	client := &http.Client{}
+	var client *http.Client
+
 	if strings.HasPrefix(uri, "https://") {
-		tr := &http.Transport{
-			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
-		}
-		client.Transport = tr
+		client = sslClient
+	} else {
+		client = myClient
 	}
 	values := url.Values{}
 	for k, v := range params {
