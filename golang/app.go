@@ -4,11 +4,8 @@ import (
 	"crypto/tls"
 	"database/sql"
 	"encoding/json"
+	"flag"
 	"fmt"
-	"github.com/gorilla/context"
-	"github.com/gorilla/mux"
-	"github.com/gorilla/sessions"
-	_ "github.com/lib/pq"
 	"html/template"
 	"log"
 	"math/rand"
@@ -21,7 +18,11 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
-	"flag"
+
+	"github.com/gorilla/context"
+	"github.com/gorilla/mux"
+	"github.com/gorilla/sessions"
+	_ "github.com/lib/pq"
 )
 
 var (
@@ -444,7 +445,7 @@ func main() {
 
 	r.HandleFunc("/", GetIndex)
 	r.PathPrefix("/").Handler(http.FileServer(http.Dir("../static")))
-	log.Fatal(http.ListenAndServe(":" + strconv.Itoa(*httpport), r))
+	log.Fatal(http.ListenAndServe(":"+strconv.Itoa(*httpport), r))
 }
 
 func checkErr(err error) {
