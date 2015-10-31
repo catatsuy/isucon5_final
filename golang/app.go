@@ -482,12 +482,16 @@ func GetData(w http.ResponseWriter, r *http.Request) {
 			}
 		} else if service == "perfectsec_attacked" {
 			key := fmt.Sprintf("pa_%s", headers["X-PERFECT-SECURITY-TOKEN"])
-			tmp, found := exCache.Get(key)
-			if !found {
-				tmp = Data{service, fetchApi(method, uri, headers, params)}
-				exCache.Set(key, tmp, 10*time.Second)
+			cache, found := exCache.Get(key)
+			if found {
+				data = append(data, cache.(Data))
+				lc("hit", user.ID, service, key)
+			} else {
+				d := Data{service, fetchApi(method, uri, headers, params)}
+				exCache.Set(key, d, 10*time.Second)
+				data = append(data, d)
+				lc("miss", user.ID, service, key)
 			}
-			data = append(data, tmp.(Data))
 		} else {
 			data = append(data, Data{service, fetchApi(method, uri, headers, params)})
 			lc("uncached", user.ID, service, "-")
