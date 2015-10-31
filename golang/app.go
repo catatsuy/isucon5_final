@@ -347,6 +347,13 @@ func GetData(w http.ResponseWriter, r *http.Request) {
 	for service, _ := range arg {
 		services = append(services, `'`+service+`'`)
 	}
+	if len(services) == 0 {
+		w.Header().Set("Content-Type", "application/json")
+		body, err := json.Marshal(data)
+		checkErr(err)
+		w.Write(body)
+		return
+	}
 	query := fmt.Sprintf(`SELECT meth, token_type, token_key, uri, service FROM endpoints WHERE service IN (%s)`, strings.Join(services, ","))
 
 	rows, err := db.Query(query)
