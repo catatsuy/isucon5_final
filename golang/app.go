@@ -367,6 +367,7 @@ func GetData(w http.ResponseWriter, r *http.Request) {
 	query := fmt.Sprintf(`SELECT meth, token_type, token_key, uri, service FROM endpoints WHERE service IN (%s)`, strings.Join(services, ","))
 
 	rows, err := db.Query(query)
+	defer rows.Close()
 	checkErr(err)
 
 	for rows.Next() {
