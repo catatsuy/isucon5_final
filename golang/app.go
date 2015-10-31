@@ -36,7 +36,7 @@ var (
 	db         *sql.DB
 	store      *sessions.CookieStore
 	exCache    = goCache.New(10*time.Second, 5*time.Second)
-	tenkiCache = goCache.New(30*time.Second, 5*time.Second)
+	tenkiCache = goCache.New(1*time.Second, 1*time.Second)
 )
 
 var kenCache map[string]Data
@@ -476,7 +476,7 @@ func GetData(w http.ResponseWriter, r *http.Request) {
 				lc("hit", user.ID, service, q)
 			} else {
 				d := Data{service, fetchApi(method, uri, headers, params)}
-				tenkiCache.Set(q, d, 30*time.Second)
+				tenkiCache.Set(q, d, 1*time.Second)
 				data = append(data, d)
 				lc("miss", user.ID, service, q)
 			}
