@@ -58,6 +58,17 @@ type Data struct {
 	Data    map[string]interface{} `json:"data"`
 }
 
+var productionServers = []string{"http://203.104.208.201", "http://203.104.208.202"}
+
+func pickServer(user *User) string {
+	if *debug {
+		return ""
+	} else {
+		index := user.ID % 2
+		return productionServers[index]
+	}
+}
+
 var saltChars = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
 
 func getSession(w http.ResponseWriter, r *http.Request) *sessions.Session {
@@ -173,11 +184,12 @@ func PostLogin(w http.ResponseWriter, r *http.Request) {
 	email := r.FormValue("email")
 	passwd := r.FormValue("password")
 	authenticate(w, r, email, passwd)
-	if getCurrentUser(w, r) == nil {
+	user := getCurrentUser(w, r)
+	if user == nil {
 		http.Error(w, "Failed to login.", http.StatusForbidden)
 		return
 	}
-	http.Redirect(w, r, "/", http.StatusSeeOther)
+	http.Redirect(w, r, pickServer(user)+"/", http.StatusSeeOther)
 }
 
 func GetLogout(w http.ResponseWriter, r *http.Request) {
@@ -479,6 +491,7 @@ func GetInitialize(w http.ResponseWriter, r *http.Request) {
 }
 
 var httpport = flag.Int("port", 0, "port to listen")
+var debug = flag.Bool("debug", false, "debug")
 
 func main() {
 	kenCache = map[string]Data{}
