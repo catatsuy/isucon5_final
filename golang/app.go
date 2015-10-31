@@ -37,6 +37,7 @@ var (
 	store      *sessions.CookieStore
 	exCache    = goCache.New(10*time.Second, 5*time.Second)
 	tenkiCache = goCache.New(1*time.Second, 1*time.Second)
+	userCache  = goCache.New(120*time.Second, 30*time.Second)
 )
 
 var kenCache map[string]Data
@@ -108,14 +109,31 @@ func getCurrentUser(w http.ResponseWriter, r *http.Request) *User {
 	if !ok || userID == nil {
 		return nil
 	}
-	row := db.QueryRow(`SELECT id,email,grade FROM users WHERE id=$1`, userID)
+
 	user := User{}
-	err := row.Scan(&user.ID, &user.Email, &user.Grade)
-	if err == sql.ErrNoRows {
-		clearSession(w, r)
-		return nil
+
+	key := fmt.Sprintf("user_%d", userID)
+	cache, found := userCache.Get(key)
+	if found {
+		user = cache.(User)
+	} else {
+		row := db.QueryRow(`SELECT id,email,grade FROM users WHERE id=$1`, userID)
+		err := row.Scan(&user.ID, &user.Email, &user.Grade)
+		if err == sql.ErrNoRows {
+			clearSession(w, r)
+			return nil
+		}
+		checkErr(err)
+		userCache.Set(key, user, 120*time.Second)
 	}
-	checkErr(err)
+
+	//row := db.QueryRow(`SELECT id,email,grade FROM users WHERE id=$1`, userID)
+	//user := User{}
+	//err := row.Scan(&user.ID, &user.Email, &user.Grade)
+	//if err == sql.ErrNoRows {
+	//clearSession(w, r)
+	//return nil
+	//}
 	context.Set(r, "user", user)
 	return &user
 }
