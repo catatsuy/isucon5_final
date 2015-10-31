@@ -381,7 +381,7 @@ func GetInitialize(w http.ResponseWriter, r *http.Request) {
 	checkErr(err)
 }
 
-var httpport = flag.Int("port", 0, "port to listen")
+var httpport = flag.Int("port", 8080, "port to listen")
 
 func main() {
 	flag.Parse()
