@@ -21,6 +21,9 @@ import (
 	"strconv"
 	"strings"
 	"syscall"
+	"time"
+
+	goCache "github.com/pmylund/go-cache"
 
 	"github.com/gorilla/context"
 	"github.com/gorilla/mux"
@@ -30,8 +33,9 @@ import (
 )
 
 var (
-	db    *sql.DB
-	store *sessions.CookieStore
+	db      *sql.DB
+	store   *sessions.CookieStore
+	exCache = goCache.New(10*time.Second, 5*time.Second)
 )
 
 var kenCache map[string]Data
@@ -457,6 +461,14 @@ func GetData(w http.ResponseWriter, r *http.Request) {
 				data = append(data, d)
 				//log.Printf("cache:miss\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, q, time.Now().Sub(t0).Nanoseconds())
 			}
+		} else if service == "perfectsec_attacked" {
+			key := fmt.Sprintf("pa_%s", headers["X-PERFECT-SECURITY-TOKEN"])
+			tmp, found := exCache.Get(key)
+			if !found {
+				tmp = Data{service, fetchApi(method, uri, headers, params)}
+				exCache.Set(key, tmp, 10*time.Second)
+			}
+			data = append(data, tmp.(Data))
 		} else {
 			data = append(data, Data{service, fetchApi(method, uri, headers, params)})
 			//log.Printf("cache:uncached\tuser_id:%d\tservice:%s\tkey:%s\ttime:%d", user.ID, service, "-", time.Now().Sub(t0).Nanoseconds())
