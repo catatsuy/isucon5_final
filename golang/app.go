@@ -31,6 +31,7 @@ var (
 )
 
 var kenCache map[string]Data
+var ken2Cache map[string]Data
 
 type User struct {
 	ID    int
@@ -378,6 +379,16 @@ func GetData(w http.ResponseWriter, r *http.Request) {
 				kenCache[key] = d
 				data = append(data, d)
 			}
+		} else if service == "ken2" {
+			q, _ := params["zipcode"]
+			cache, ok := ken2Cache[q]
+			if ok {
+				data = append(data, cache)
+			} else {
+				d := Data{service, fetchApi(method, uri, headers, params)}
+				ken2Cache[q] = d
+				data = append(data, d)
+			}
 		} else {
 			data = append(data, Data{service, fetchApi(method, uri, headers, params)})
 		}
@@ -401,6 +412,7 @@ var httpport = flag.Int("port", 0, "port to listen")
 
 func main() {
 	kenCache = map[string]Data{}
+	ken2Cache = map[string]Data{}
 	flag.Parse()
 	host := os.Getenv("ISUCON5_DB_HOST")
 	if host == "" {
