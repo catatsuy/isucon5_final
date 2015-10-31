@@ -292,11 +292,11 @@ func PostModify(w http.ResponseWriter, r *http.Request) {
 
 var (
 	sslClient = &http.Client{Transport: &http.Transport{
-		MaxIdleConnsPerHost: 6,
+		MaxIdleConnsPerHost: 12,
 		TLSClientConfig:     &tls.Config{InsecureSkipVerify: true},
 	}}
 	myClient = &http.Client{Transport: &http.Transport{
-		MaxIdleConnsPerHost: 6,
+		MaxIdleConnsPerHost: 12,
 	}}
 )
 
