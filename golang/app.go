@@ -30,6 +30,8 @@ var (
 	store *sessions.CookieStore
 )
 
+var kenCache map[string]Data
+
 type User struct {
 	ID    int
 	Email string
@@ -359,12 +361,26 @@ func GetData(w http.ResponseWriter, r *http.Request) {
 		}
 
 		ks := make([]interface{}, len(conf.Keys))
+		ks2 := make([]string, len(conf.Keys))
 		for i, s := range conf.Keys {
 			ks[i] = s
+			ks2[i] = s
 		}
 		uri := fmt.Sprintf(*uriTemplate, ks...)
 
-		data = append(data, Data{service, fetchApi(method, uri, headers, params)})
+		if service == "ken" {
+			key := ks2[0]
+			cache, ok := kenCache[key]
+			if ok {
+				data = append(data, cache)
+			} else {
+				d := Data{service, fetchApi(method, uri, headers, params)}
+				kenCache[key] = d
+				data = append(data, d)
+			}
+		} else {
+			data = append(data, Data{service, fetchApi(method, uri, headers, params)})
+		}
 	}
 
 	w.Header().Set("Content-Type", "application/json")
@@ -384,6 +400,7 @@ func GetInitialize(w http.ResponseWriter, r *http.Request) {
 var httpport = flag.Int("port", 0, "port to listen")
 
 func main() {
+	kenCache = map[string]Data{}
 	flag.Parse()
 	host := os.Getenv("ISUCON5_DB_HOST")
 	if host == "" {
