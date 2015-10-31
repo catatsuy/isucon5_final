@@ -21,6 +21,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"flag"
 )
 
 var (
@@ -379,7 +380,10 @@ func GetInitialize(w http.ResponseWriter, r *http.Request) {
 	checkErr(err)
 }
 
+var httpport = flag.Int("port", 0, "port to listen")
+
 func main() {
+	flag.Parse()
 	host := os.Getenv("ISUCON5_DB_HOST")
 	if host == "" {
 		host = "localhost"
@@ -440,7 +444,7 @@ func main() {
 
 	r.HandleFunc("/", GetIndex)
 	r.PathPrefix("/").Handler(http.FileServer(http.Dir("../static")))
-	log.Fatal(http.ListenAndServe(":8080", r))
+	log.Fatal(http.ListenAndServe(":" + strconv.Itoa(*httpport), r))
 }
 
 func checkErr(err error) {
