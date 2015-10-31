@@ -353,13 +353,32 @@ func GetData(w http.ResponseWriter, r *http.Request) {
 	checkErr(json.Unmarshal([]byte(argJson), &arg))
 
 	data := make([]Data, 0, len(arg))
-	for service, conf := range arg {
-		row := db.QueryRow(`SELECT meth, token_type, token_key, uri FROM endpoints WHERE service=$1`, service)
+	var services []string
+	for service, _ := range arg {
+		services = append(services, `'`+service+`'`)
+	}
+	if len(services) == 0 {
+		w.Header().Set("Content-Type", "application/json")
+		body, err := json.Marshal(data)
+		checkErr(err)
+		w.Write(body)
+		return
+	}
+	query := fmt.Sprintf(`SELECT meth, token_type, token_key, uri, service FROM endpoints WHERE service IN (%s)`, strings.Join(services, ","))
+
+	rows, err := db.Query(query)
+	checkErr(err)
+
+	for rows.Next() {
 		var method string
 		var tokenType *string
 		var tokenKey *string
 		var uriTemplate *string
-		checkErr(row.Scan(&method, &tokenType, &tokenKey, &uriTemplate))
+		var serv *string
+		checkErr(rows.Scan(&method, &tokenType, &tokenKey, &uriTemplate, &serv))
+		service := *serv
+
+		conf, _ := arg[service]
 
 		headers := make(map[string]string)
 		params := conf.Params
